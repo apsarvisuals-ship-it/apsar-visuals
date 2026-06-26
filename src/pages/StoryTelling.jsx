@@ -19,7 +19,7 @@ export default function StoryTelling() {
   const videos = [
     {
       title: "Emotional Storytelling",
-      file: "/videos/Sneham_KP3_2.mp4",
+      file: "/videos/Sneham_KP_3.mp4",
       caption:
         "A cinematic storytelling reel designed to emotionally connect with the audience.",
       platform: "Instagram Reel",
