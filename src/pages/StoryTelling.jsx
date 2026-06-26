@@ -29,7 +29,8 @@ export default function StoryTelling() {
 
     {
       title: "Brand Story",
-      file: "/videos/Sneham_KP3_2.mp4",
+      file:   "https://drive.google.com/uc?export=download&id=1lVu6q2TmvHAiy0p49rKKGZ5VmgW0Hx-d",
+  caption: "A cinematic storytelling reel...",
       caption:
         "Creative brand storytelling to improve engagement and build trust.",
       platform: "Instagram Reel",
