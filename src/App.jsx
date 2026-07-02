@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Stats from "./components/Stats";
 import About from "./components/About";
+import SoftwareWeUse from "./components/SoftwareWeUse";
 import Services from "./components/Services";
 import Packages from "./components/Packages";
 import Portfolio from "./components/Portfolio";
@@ -17,25 +18,41 @@ import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import InfluencerMarketing from "./pages/InfluencerMarketing";
 import FashionBrand from "./pages/FashionBrand";
 import EventPromotion from "./pages/EventPromotion";
-import AcademyPromotion from "./pages/AcademyPromotion";
+import BrandPromotion from "./pages/BrandPromotion";
 import Podcasts from "./pages/Podcasts";
 import StoryTelling from "./pages/StoryTelling";
+import ServicesWeOffer from "./pages/ServicesWeOffer";
 
 function HomePage() {
   return (
     <div className="bg-[#07101d] text-white overflow-x-hidden">
       <Navbar />
+
       <Hero />
+
       <Stats />
+
       <About />
+
+      {/* NEW SECTION */}
+      <SoftwareWeUse />
+
       <Services />
+
       <Packages />
+
       <Portfolio />
+
       <Process />
+
       <Testimonials />
+
       <FAQ />
+
       <Contact />
+
       <Footer />
+
       <FloatingWhatsApp />
     </div>
   );
@@ -44,9 +61,10 @@ function HomePage() {
 export default function App() {
   return (
     <Routes>
-
+      {/* Homepage */}
       <Route path="/" element={<HomePage />} />
 
+      {/* Portfolio Pages */}
       <Route
         path="/portfolio/influencer-marketing"
         element={<InfluencerMarketing />}
@@ -63,8 +81,8 @@ export default function App() {
       />
 
       <Route
-        path="/portfolio/academy-promotion"
-        element={<AcademyPromotion />}
+        path="/portfolio/brand-promotion"
+        element={<BrandPromotion />}
       />
 
       <Route
@@ -77,6 +95,11 @@ export default function App() {
         element={<StoryTelling />}
       />
 
+      {/* Services Page */}
+      <Route
+        path="/services-we-offer"
+        element={<ServicesWeOffer />}
+      />
     </Routes>
   );
 }

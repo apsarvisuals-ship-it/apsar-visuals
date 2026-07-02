@@ -1,41 +1,52 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+
 import {
   FaArrowLeft,
   FaPlayCircle,
   FaInstagram,
   FaFacebook,
   FaYoutube,
+  FaExternalLinkAlt,
+  FaVolumeUp,
+  FaVolumeMute,
 } from "react-icons/fa";
 
-export default function StoryTelling() {
+export default function EventPromotion() {
+  const videoRefs = useRef([]);
+  const [activeVideo, setActiveVideo] = useState(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const videos = [
     {
-      title: "Emotional Storytelling",
-      file: "/videos/Sneham_KP3_2.mp4",
-      caption:
-        "A cinematic storytelling reel designed to emotionally connect with the audience.",
-      platform: "Instagram",
+      title: "Event Highlights",
+      file: "/videos/EP1.mp4",
+      ratio: "16/9",
+      caption: "Event coverage and promotion.",
+      platform: "Instagram Reel",
       icon: <FaInstagram />,
-      url: "https://www.instagram.com/reel/DXwmDPChVs_/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      url: "https://www.instagram.com/",
     },
 
     {
       title: "Brand Story",
-      file: "/videos/Sneham_KP3_2.mp4",
-      caption:
-        "Creative brand storytelling to improve engagement and build trust.",
-      platform: "Instagram",
+      file: "/videos/EP2.mp4",
+      ratio: "9/16",
+      caption: "Creative brand storytelling to improve engagement and trust.",
+      platform: "Instagram Reel",
       icon: <FaInstagram />,
       url: "https://www.instagram.com/",
     },
 
     {
       title: "Customer Journey",
-      file: "/videos/Sneham_KP3_2.mp4",
-      caption:
-        "Visual storytelling that explains the customer's complete experience.",
-      platform: "Facebook",
+      file: "/videos/EP3.mp4",
+      ratio: "9/16",
+      caption: "Visual storytelling that explains the customer's experience.",
+      platform: "Facebook Video",
       icon: <FaFacebook />,
       url: "https://www.facebook.com/",
     },
@@ -43,8 +54,8 @@ export default function StoryTelling() {
     {
       title: "Product Story",
       file: "/videos/story4.mp4",
-      caption:
-        "Showcasing products with cinematic storytelling techniques.",
+      ratio: "16/9",
+      caption: "Showcasing products with cinematic storytelling.",
       platform: "YouTube",
       icon: <FaYoutube />,
       url: "https://www.youtube.com/",
@@ -53,9 +64,9 @@ export default function StoryTelling() {
     {
       title: "Founder Story",
       file: "/videos/story5.mp4",
-      caption:
-        "A powerful founder introduction to build authenticity.",
-      platform: "Instagram",
+      ratio: "9/16",
+      caption: "A powerful founder introduction.",
+      platform: "Instagram Reel",
       icon: <FaInstagram />,
       url: "https://www.instagram.com/",
     },
@@ -63,23 +74,52 @@ export default function StoryTelling() {
     {
       title: "Campaign Story",
       file: "/videos/story6.mp4",
-      caption:
-        "Marketing campaign designed for maximum audience retention.",
-      platform: "Instagram",
+      ratio: "1/1",
+      caption: "Marketing campaign for audience retention.",
+      platform: "Instagram Reel",
       icon: <FaInstagram />,
       url: "https://www.instagram.com/",
     },
   ];
 
+  const playVideo = (index) => {
+    videoRefs.current.forEach((video, i) => {
+      if (!video) return;
+
+      if (i !== index) {
+        video.pause();
+        video.currentTime = 0;
+        video.muted = true;
+      }
+    });
+
+    const current = videoRefs.current[index];
+
+    if (!current) return;
+
+    current.muted = false;
+    current.controls = true;
+    current.play();
+
+    setActiveVideo(index);
+  };
+
+  const toggleMute = (index) => {
+    const current = videoRefs.current[index];
+
+    if (!current) return;
+
+    current.muted = !current.muted;
+
+    setActiveVideo(index);
+  };
+
   return (
     <div className="min-h-screen bg-[#07101d] text-white">
-
       {/* Header */}
 
       <section className="bg-gradient-to-b from-[#101b2c] to-[#07101d] py-20 border-b border-white/10">
-
         <div className="max-w-7xl mx-auto px-8">
-
           <Link
             to="/"
             className="inline-flex items-center gap-3 text-yellow-400 hover:text-yellow-300"
@@ -91,142 +131,152 @@ export default function StoryTelling() {
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-6xl font-black mt-8"
+            className="text-6xl font-black mt-8"
           >
-            Story
-            <span className="text-yellow-400"> Telling</span>
+            Event
+            <span className="text-yellow-400"> Promotion</span>
           </motion.h1>
 
-          <p className="text-gray-400 mt-6 max-w-3xl leading-8">
-            Storytelling is one of the most powerful ways to connect with an
-            audience. Browse our storytelling portfolio below.
+          <p className="text-gray-400 mt-6 max-w-3xl text-lg leading-8">
+            Creative storytelling videos crafted for brands, creators and
+            businesses.
           </p>
-
         </div>
-
       </section>
 
-      {/* Portfolio Grid */}
+      {/* Portfolio */}
 
       <section className="py-20">
-
         <div className="max-w-7xl mx-auto px-8">
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
             {videos.map((video, index) => (
-
-              <motion.a
+              <motion.div
                 key={index}
-                href={video.url}
-                target="_blank"
-                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 whileHover={{
-                  y: -8,
+                  y: -10,
                   scale: 1.03,
                 }}
-                transition={{ delay: index * 0.08 }}
-                className="group bg-[#101b2c] rounded-2xl overflow-hidden border border-white/10 hover:border-yellow-400 duration-300 shadow-lg cursor-pointer"
+                transition={{
+                  duration: 0.4,
+                  delay: index * 0.08,
+                }}
+                className="
+                group
+                w-full
+                rounded-3xl
+                overflow-hidden
+                bg-[#101b2c]
+                border border-white/10
+                hover:border-yellow-400
+                shadow-xl
+                transition-all
+                duration-300
+"
               >
-
+                {/* Video */}
                 <div className="relative">
-
                   <video
+                    ref={(el) => (videoRefs.current[index] = el)}
                     src={video.file}
                     autoPlay
                     muted
                     loop
                     playsInline
-                    className="w-full h-56 object-cover pointer-events-none"
+                    controls={activeVideo === index}
+                    className="w-full bg-black object-contain"
+                    style={{
+                      aspectRatio: video.ratio,
+                    }}
                   />
 
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/5 duration-300 flex items-center justify-center">
+                  {/* Play Button */}
+                  <button
+                    onClick={() => playVideo(index)}
+                    className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/10 transition"
+                  >
+                    <div className="bg-black/70 p-4 rounded-full hover:scale-110 transition">
+                      <FaPlayCircle className="text-5xl text-yellow-400" />
+                    </div>
+                  </button>
 
-                    <div className="bg-black/60 rounded-full p-4">
+                  {/* Mute Button */}
+                  {activeVideo === index && (
+                    <button
+                      onClick={() => toggleMute(index)}
+                      className="absolute top-4 right-4 bg-black/70 p-3 rounded-full"
+                    >
+                      {videoRefs.current[index]?.muted ? (
+                        <FaVolumeMute className="text-yellow-400 text-xl" />
+                      ) : (
+                        <FaVolumeUp className="text-yellow-400 text-xl" />
+                      )}
+                    </button>
+                  )}
+                </div>
 
-                      <FaPlayCircle className="text-yellow-400 text-4xl" />
+                {/* Content */}
 
+                <div className="p-5 flex flex-col justify-between min-h-[180px]">
+                  <div>
+                    <div className="inline-flex items-center gap-2 bg-yellow-400/10 text-yellow-400 px-3 py-2 rounded-full text-xs">
+                      {video.icon}
+
+                      <span>{video.platform}</span>
                     </div>
 
+                    <h3 className="text-2xl font-bold mt-5">{video.title}</h3>
+
+                    <p className="text-gray-400 mt-3 text-sm leading-7">
+                      {video.caption}
+                    </p>
                   </div>
 
+                  <a
+                    href={video.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-6 flex items-center gap-2 text-yellow-400 hover:text-white transition"
+                  >
+                    View Original
+                    <FaExternalLinkAlt className="text-xs" />
+                  </a>
                 </div>
-
-                <div className="p-6">
-
-                  <div className="flex items-center gap-2 text-yellow-400">
-
-                    {video.icon}
-
-                    <span className="text-sm">
-
-                      View on {video.platform}
-
-                    </span>
-
-                  </div>
-
-                  <h3 className="text-xl font-bold mt-4">
-
-                    {video.title}
-
-                  </h3>
-
-                  <p className="text-gray-400 mt-3 text-sm leading-7">
-
-                    {video.caption}
-
-                  </p>
-
-                </div>
-
-              </motion.a>
-
+              </motion.div>
             ))}
-
           </div>
-
         </div>
-
       </section>
 
       {/* CTA */}
 
       <section className="pb-24">
-
         <div className="max-w-6xl mx-auto px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="rounded-3xl bg-gradient-to-r from-yellow-400 to-yellow-500 text-black py-20 px-10 text-center shadow-2xl"
+          >
+            <h2 className="text-5xl font-black">Ready To Tell Your Story?</h2>
 
-          <div className="rounded-3xl bg-gradient-to-r from-yellow-400 to-yellow-500 text-black py-16 text-center">
-
-            <h2 className="text-4xl md:text-5xl font-black">
-
-              Ready To Tell Your Story?
-
-            </h2>
-
-            <p className="mt-6 text-lg max-w-2xl mx-auto">
-
-              Let's create content that connects with your audience and grows your brand.
-
+            <p className="mt-6 max-w-3xl mx-auto text-lg leading-8">
+              Let's create cinematic videos that attract attention, build trust
+              and grow your business through storytelling.
             </p>
 
             <a
-              href="https://wa.me/919876543210"
+              href="https://wa.me/917539954632"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block mt-8 bg-black text-white px-10 py-4 rounded-full font-bold hover:bg-gray-900 transition"
+              className="inline-block mt-10 bg-black text-white px-10 py-4 rounded-full font-bold hover:scale-105 transition"
             >
               Start Your Project
             </a>
-
-          </div>
-
+          </motion.div>
         </div>
-
       </section>
-
     </div>
   );
 }

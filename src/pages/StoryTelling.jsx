@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
+
 import {
   FaArrowLeft,
   FaPlayCircle,
@@ -16,6 +17,9 @@ export default function StoryTelling() {
   const videoRefs = useRef([]);
   const [activeVideo, setActiveVideo] = useState(null);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const videos = [
     {
       title: "Emotional Storytelling",
