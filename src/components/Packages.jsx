@@ -16,7 +16,7 @@ export default function Packages() {
 
     {
       name: "Growth",
-      price: "₹12,999",
+      price: "₹14,999",
       popular: true,
       features: [
         "8 Videos",

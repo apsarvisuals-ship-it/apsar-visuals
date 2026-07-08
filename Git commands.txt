@@ -3,3 +3,9 @@ git add .
 git commit -m "Update portfolio website and optimize videos"
 
 git push origin main
+
+
+
+SWITCHACCOUNT
+cmdkey /list
+cmdkey /delete:git:https://github.com
