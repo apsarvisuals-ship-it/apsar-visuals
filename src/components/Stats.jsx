@@ -17,19 +17,19 @@ export default function Stats() {
   const stats = [
     {
       icon: <FaProjectDiagram />,
-      number: 150,
+      number: 100,
       suffix: "+",
       title: "Projects Completed",
     },
     {
       icon: <FaUsers />,
-      number: 50,
+      number: 20,
       suffix: "+",
       title: "Happy Clients",
     },
     {
       icon: <FaChartLine />,
-      number: 2,
+      number: 5,
       suffix: "M+",
       title: "People Reached",
     },

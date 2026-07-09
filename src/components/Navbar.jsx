@@ -84,7 +84,7 @@ export default function Navbar() {
             <motion.img
               whileHover={{ rotate: -6, scale: 1.06 }}
               transition={{ type: "spring", stiffness: 300, damping: 12 }}
-              src="/logo.png"
+              src="/logo.jpg"
               alt="logo"
               className="w-12 h-12 sm:w-14 sm:h-14 object-contain drop-shadow-[0_0_12px_rgba(250,204,21,0.35)]"
             />

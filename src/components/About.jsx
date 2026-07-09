@@ -29,7 +29,7 @@ export default function About() {
 
               <h2 className="text-4xl font-black">
 
-                5+
+                2+
 
               </h2>
 

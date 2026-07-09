@@ -187,21 +187,21 @@ export default function Hero() {
             <div className="grid grid-cols-3 gap-8 mt-16">
               <div>
                 <h3 className="text-4xl font-black text-yellow-400">
-                  <CountUp end={100} duration={2.5} suffix="+" />
+                  <CountUp end={100} duration={1} suffix="+" />
                 </h3>
                 <p className="text-gray-400 mt-2">Projects</p>
               </div>
 
               <div>
                 <h3 className="text-4xl font-black text-yellow-400">
-                  <CountUp end={50} duration={2.5} suffix="+" />
+                  <CountUp end={20} duration={1} suffix="+" />
                 </h3>
                 <p className="text-gray-400 mt-2">Clients</p>
               </div>
 
               <div>
                 <h3 className="text-4xl font-black text-yellow-400">
-                  <CountUp end={5} duration={2.5} suffix="M+" />
+                  <CountUp end={5} duration={1} suffix="M+" />
                 </h3>
                 <p className="text-gray-400 mt-2">Reach</p>
               </div>

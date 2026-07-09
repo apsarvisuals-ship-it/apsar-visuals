@@ -16,7 +16,7 @@ export default function Footer() {
           <div>
 
             <img
-              src="/logo.png"
+              src="/logo.jpg"
               className="w-20"
             />
 
