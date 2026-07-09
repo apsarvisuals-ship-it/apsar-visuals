@@ -7,7 +7,7 @@ export default function Packages() {
 
     {
       name: "Starter",
-      price: "₹7,999",
+      price: "₹13,499",
       features: [
         "8 Videos",
         "4 Posts",
@@ -16,7 +16,7 @@ export default function Packages() {
 
     {
       name: "Growth",
-      price: "₹14,999",
+      price: "₹16,999",
       popular: true,
       features: [
         "8 Videos",
@@ -28,7 +28,7 @@ export default function Packages() {
 
     {
       name: "Scale",
-      price: "₹17,999",
+      price: "₹19,999",
       features: [
         "8 Videos",
         "10 Posts",
@@ -42,9 +42,9 @@ export default function Packages() {
       name: "Performance",
       price: "₹24,999",
       features: [
-        "8 Videos",
+        "10 Videos",
         "12 Posts",
-        "20 Stories",
+        "daily Stories",
         "Instagram Handling",
         "Meta Ads",
         "Monthly Analytics"
@@ -53,11 +53,11 @@ export default function Packages() {
 
     {
       name: "Elite",
-      price: "₹34,999",
+      price: "₹29,999",
       features: [
-        "8 Videos",
+        "10 Videos",
         "12 Posts",
-        "20 Stories",
+        "Daily Stories",
         "Instagram Handling",
         "Facebook Handling",
         "Meta Ads",
